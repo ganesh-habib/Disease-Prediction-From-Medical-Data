@@ -84,8 +84,7 @@ with st.form("prediction"):
         series = dataset.features[feature]
         with columns[index % 3]:
             if pd.api.types.is_numeric_dtype(series):
-                default = float(series.median())
-                values[feature] = st.number_input(feature, value=default, format="%.4f")
+                values[feature] = st.number_input(feature, value=0.0, format="%.4f")
             else:
                 options = sorted(series.dropna().astype(str).unique())
                 values[feature] = st.selectbox(feature, options)
